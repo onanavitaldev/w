@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth bg-white text-neutral-900">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Fondamental -->
+    <title>Vital. — Développeur Web Indépendant & Full-Stack</title>
+    <meta name="description" content="Développeur indépendant spécialisé dans la création d'applications web rapides, d'architectures robustes et de solutions sur mesure au service de votre business.">
+    <meta name="keywords" content="Développeur indépendant, Freelance, Développeur Full-Stack, Pharmaflow, Création site web, SaaS e-Santé, Cameroun, Vital Onana, WebByte Agency">
+    <meta name="author" content="Vital Onana">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://onanavitaldev.github.io/w">
+
+    <!-- Open Graph / Facebook (Partage sur les réseaux) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://onanavitaldev.github.io/w">
+    <meta property="og:title" content="Vital. — Développeur Web Indépendant">
+    <meta property="og:description" content="Des architectures légères, rapides et indépendantes pour booster votre business. Découvrez mes derniers projets comme Pharmaflow.">
+    <meta property="og:image" content="https://onanavitaldev.github.io/wpublic/assets/images/me.jpg">
+    <meta property="og:locale" content="fr_FR">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://onanavitaldev.github.io/w">
+    <meta name="twitter:title" content="Vital. — Développeur Web Indépendant">
+    <meta name="twitter:description" content="Des architectures légères, rapides et indépendantes pour booster votre business. Découvrez mes derniers projets comme Pharmaflow.">
+    <meta name="twitter:image" content="https://onanavitaldev.github.io/w/public/assets/images/me.jpg">
+
+    <!-- Favicons & Icônes (Optionnel mais recommandé pour le SEO visuel) -->
+    <link rel="icon" type="image/png" sizes="32x32" href="public/assets/images/me.jpg">
+    <link rel="icon" type="image/png" sizes="16x16" href="public/assets/images/me.jpg">
+    <link rel="apple-touch-icon" sizes="180x180" href="public/assets/images/me.jpg">
+    <meta name="theme-color" content="#ea580c"> <!-- Code couleur orange-600 de ton hero -->
+
+    <!-- Scripts et polices d'origine -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        /* Style pour le masque flou sous la photo du Hero comme sur l'image */
+        .hero-gradient-mask {
+            background: linear-gradient(to bottom, transparent 60%, #ffffff 100%);
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden selection:bg-orange-500 selection:text-white">
+
+    <header class="absolute top-0 left-0 w-full z-50">
+        <nav class="max-w-7xl mx-auto flex justify-between items-center px-6 py-6 md:px-12">
+            <a href="#" class="text-xl font-bold tracking-tight text-white mix-blend-difference">Vital.</a>
+            
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-white/80">
+                <a href="#" class="hover:text-white transition-colors">Accueil</a>
+                <a href="#about" class="hover:text-white transition-colors">À propos</a>
+                <a href="#work" class="hover:text-white transition-colors">Projets</a>
+                <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+            </div>
+            
+            <a href="https://wa.me/237620828497" target="_blank" class="bg-white text-black text-xs font-semibold px-5 py-2.5 rounded-full flex items-center space-x-2 shadow-sm hover:bg-neutral-100 transition-all">
+                <span>WhatsApp?</span>
+                <span class="w-4 h-4 bg-black text-white rounded-full flex items-center justify-center text-[10px]">→</span>
+            </a>
+        </nav>
+    </header>
+
+    <section class="relative min-h-[90vh] flex flex-col justify-end bg-gradient-to-br from-orange-600 via-red-600 to-amber-500 pt-32 pb-20 md:pb-32 overflow-hidden">
+        <div class="absolute inset-0 w-full h-full flex justify-center items-end pointer-events-none z-0">
+            <img src="public/assets/images/me.jpg" 
+                 alt="Créateur" 
+                 class="h-[85%] md:h-[95%] rounded-none sm:rounded-lg object-contain grayscale brightness-90 mix-blend-luminosity transform translate-y-10 hero-img mt-10">
+            <div class="absolute inset-0 hero-gradient-mask"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto w-full px-6 md:px-12 relative z-10 grid grid-cols-1 md:grid-cols-12 gap-6 items-end">
+            <div class="md:col-span-8">
+                <h1 class="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white leading-[1.1] hero-text">
+                    Développeur<br> Indépendant.
+                </h1>
+            </div>
+            <div class="md:col-span-4 pb-2">
+                <p class="text-neutral-800 text-lg font-medium leading-relaxed max-w-sm hero-sub">
+                    Loin de la hype sur les technos, au service de votre business : des architectures légères, rapides, indépendantes.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <main class="max-w-7xl mx-auto px-6 md:px-12 py-24 space-y-32">
+
+        <section id="work" class="grid grid-cols-1 lg:grid-cols-12 gap-8 scroll-mt-24">
+            <div class="lg:col-span-3 flex items-start space-x-2">
+                <span class="w-2 h-2 rounded-full bg-red-500 mt-1.5"></span>
+                <span class="text-xs font-bold uppercase tracking-wider text-neutral-400">Projets Récents</span>
+            </div>
+            
+            <div class="lg:col-span-9 space-y-16">
+                <div class="flex flex-wrap gap-2 justify-between items-end border-b border-neutral-100 pb-6">
+                    <h2 class="text-2xl md:text-5xl font-bold tracking-tight max-w-md">Une sélection de mes Drop.</h2>
+                    <a href="#" class="bg-red-600 text-white text-xs font-bold px-4 py-2 rounded-full flex items-center space-x-2 hover:bg-red-700 transition-colors">
+                        <span>Tout voir</span>
+                    </a>
+                </div>
+
+                <div class="space-y-16 project-trigger">
+                    <div class="group cursor-pointer project-item">
+                        <div class="bg-[#1e262f] rounded-2xl p-8 md:p-12 aspect-[16/9] flex items-center justify-center overflow-hidden transition-all duration-500 group-hover:scale-[0.99]">
+                            <div class="w-4/5 transform translate-y-8 group-hover:translate-y-4 transition-transform duration-500">
+                                <img src="public/assets/images/pharmaflow.png" alt="website" class="rounded-lg shadow-2xl">
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-4 sm:gap-1 justify-between items-center mt-6">
+                            <div>
+                                <h3 class="text-lg font-bold">Pharmaflow - SaaS e-Santé.</h3>
+                                <p class="text-sm text-neutral-400 mt-1">
+                                    Une application web spécialisée dans le cracking des dates de périmption des médicaments en pharmacie.
+                                </p>
+                            </div>
+                            <a href="https://webbyteagency.github.io/pharmaflow" target="_blank" class="flex items-center space-x-2 text-xs font-bold whitespace-nowrap bg-neutral-100 hover:bg-neutral-200 px-4 py-2 rounded-full transition-colors">
+                                <span class="w-2 h-2 rounded-full bg-black"></span>
+                                <span>Voir le projet</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="group cursor-pointer project-item">
+                        <div class="bg-[#e4eb3e] rounded-2xl p-8 md:p-12 aspect-[16/9] flex items-center justify-center overflow-hidden transition-all duration-500 group-hover:scale-[0.99]">
+                            <div class="w-1/2 transform translate-y-8 group-hover:translate-y-4 transition-transform duration-500">
+                                <img src="public/assets/images/agtravelsarl.png" alt="website" class="rounded-lg shadow-2xl">
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-4 sm:gap-1 justify-between items-center mt-6">
+                            <div>
+                                <h3 class="text-lg font-bold">Site vitrine pour réservation des billets d'avion.</h3>
+                                <p class="text-sm text-neutral-400 mt-1">Design UI épuré et intuitif pour éffectuer des réservations.</p>
+                            </div>
+                            <a href="https://agtravelsarl.com" target="_blank" class="flex items-center space-x-2 text-xs font-bold whitespace-nowrap bg-neutral-100 hover:bg-neutral-200 px-4 py-2 rounded-full transition-colors">
+                                <span class="w-2 h-2 rounded-full bg-black"></span>
+                                <span>Voir le projet</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="grid grid-cols-1 lg:grid-cols-12 gap-8 border-t border-neutral-100 pt-16 scroll-mt-24">
+            <div class="lg:col-span-3 flex items-start space-x-2">
+                <span class="w-2 h-2 rounded-full bg-red-500 mt-1.5"></span>
+                <span class="text-xs font-bold uppercase tracking-wider text-neutral-400">Services</span>
+            </div>
+            
+            <div class="lg:col-span-9 space-y-12">
+                <h2 class="text-2xl md:text-5xl font-bold tracking-tight">Des Solutions Créatives<br>Qui Fonctionnent.</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6 service-grid">
+                    <div class="space-y-3 p-6 border border-neutral-100 rounded-2xl transition-shadow">
+                        <div class="w-10 h-10 bg-neutral-100 rounded-full flex items-center justify-center text-xl">✦</div>
+                        <h3 class="font-bold text-base">Développement Front-End.</h3>
+                        <p class="text-sm text-neutral-500 leading-relaxed">Je propulse des interfaces épurées, fluides et ultra-rapides. Pas de fioritures ni de scripts lourds : du code léger pensé pour capter l'utilisateur et maximiser vos conversions instantanément.</p>
+                    </div>
+
+                    <div class="space-y-3 p-6 border border-neutral-100 rounded-2xl transition-shadow">
+                        <div class="w-10 h-10 bg-neutral-100 rounded-full flex items-center justify-center text-xl">⬡</div>
+                        <h3 class="font-bold text-base">Architectures Back-End.</h3>
+                        <p class="text-sm text-neutral-500 leading-relaxed">Je structure des bases de données logiques et des API robustes sur mesure. Votre logique métier est blindée, sécurisée et automatisée pour éliminer définitivement les bugs à répétition.</p>
+                    </div>
+
+                    <div class="space-y-3 p-6 border border-neutral-100 rounded-2xl transition-shadow">
+                        <div class="w-10 h-10 bg-neutral-100 rounded-full flex items-center justify-center text-xl">■</div>
+                        <h3 class="font-bold text-base">Systèmes Web Full-Stack.</h3>
+                        <p class="text-sm text-neutral-500 leading-relaxed">Création de plateformes et d'applications autonomes de bout en bout. Vous obtenez un outil puissant, totalement indépendant des abonnements tiers mondiaux et taillé pour évoluer avec votre business.</p>
+                    </div>
+
+                    <div class="space-y-3 p-6 border border-neutral-100 rounded-2xl transition-shadow">
+                        <div class="w-10 h-10 bg-neutral-100 rounded-full flex items-center justify-center text-xl">❖</div>
+                        <h3 class="font-bold text-base">Déploiement & Performance.</h3>
+                        <p class="text-sm text-neutral-500 leading-relaxed">De l'ombre du code à la mise en production. Je configure vos serveurs pour garantir un chargement immédiat et une stabilité totale, prête à encaisser vos pics de trafic sans jamais fléchir.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact" class="bg-neutral-50 border-t border-neutral-200/60 mt-10 sm:mt-32 scroll-mt-24">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 py-20 grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+            
+            <div class="md:col-span-4 space-y-6">
+                <div class="text-1xl sm:text-2xl font-semibold tracking-wide space-y-2">
+                    <p><a href="mailto:onanavital@outlook.com" class="hover:underline text-neutral-700">Envoyer un mail</a></p>
+                    <p><a href="https://wa.me/237620828497" target="_blank" class="hover:underline text-neutral-400">WhatsApp</a></p>
+                    <p><a href="https://www.linkedin.com/in/onanavital" target="_blank" class="hover:underline text-neutral-400">LinkedIn</a></p>
+                </div>
+                <div class="w-20 h-20 bg-orange-600 rounded-xl overflow-hidden relative">
+                    <img src="public/assets/images/me.jpg" alt="Avatar miniature" class="w-full h-full object-cover grayscale mix-blend-luminosity rounded-full">
+                </div>
+            </div>
+
+            <div class="md:col-span-8 space-y-8 md:text-right flex flex-col md:items-end">
+                <h2 class="text-4xl md:text-8xl font-extrabold tracking-tight text-black leading-none">
+                    Créons ensemble.<br>Votre projet.
+                </h2>
+                
+                <a href="mailto:onanavital@outlook.com" class="bg-red-600 text-white text-sm font-bold px-6 py-3 rounded-full inline-flex items-center space-x-2 hover:bg-red-700 transition-colors">
+                    <span>Me contacter</span>
+                    <span>→</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 md:px-12 py-6 border-t border-neutral-200/60 flex flex-col sm:flex-row justify-between items-center text-[11px] text-neutral-400 font-medium">
+            <div class="flex space-x-6 mb-4 sm:mb-0">
+                <a href="#">Accueil</a>
+                <a href="#about">À propos</a>
+                <a href="#work">Projets</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <p>© All Right Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+            // ==========================================
+            // 1. ANIMATION D'ENTRÉE (HERO) - Déjà présente et optimisée
+            // ==========================================
+            const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1.4 } });
+
+            tl.from(".hero-img", {
+                y: 100,
+                opacity: 0,
+                duration: 1.8
+            })
+            .from(".hero-text", {
+                y: 80,
+                opacity: 0,
+            }, "-=1.4")
+            .from(".hero-sub", {
+                y: 30,
+                opacity: 0,
+            }, "-=1.0");
+
+
+            // ==========================================
+            // 2. ANIMATION DES PROJETS (Effet Révélation au Scroll)
+            // ==========================================
+            // On anime chaque projet individuellement pour un effet plus fluide et précis
+            gsap.utils.toArray(".project-item").forEach((project) => {
+                gsap.from(project, {
+                    scrollTrigger: {
+                        trigger: project,
+                        start: "top 85%", // Déclenche l'animation quand le haut du projet atteint 85% de l'écran
+                        toggleActions: "play none none none", // Joue l'animation une seule fois
+                    },
+                    y: 80,
+                    opacity: 0,
+                    duration: 1.2,
+                    ease: "power3.out"
+                });
+
+                // Optionnel : Effet de parallaxe léger sur l'image à l'intérieur du projet lors du scroll
+                const img = project.querySelector("img");
+                if (img) {
+                    gsap.to(img, {
+                        scrollTrigger: {
+                            trigger: project,
+                            start: "top bottom",
+                            end: "bottom top",
+                            scrub: true, // L'animation suit le mouvement exact du scroll
+                        },
+                        y: -20,
+                        ease: "none"
+                    });
+                }
+            });
+
+
+            // ==========================================
+            // 3. ANIMATION DE LA GRILLE DE SERVICES (Effet "Stagger" en Cascade)
+            // ==========================================
+            gsap.from(".service-grid > div", {
+                scrollTrigger: {
+                    trigger: ".service-grid",
+                    start: "top 80%",
+                },
+                y: 50,
+                opacity: 0,
+                duration: 1,
+                stagger: 0.15, // Délai de 0.15s entre l'apparition de chaque carte
+                ease: "power2.out"
+            });
+
+
+            // ==========================================
+            // 4. ANIMATION DES TITRES DE SECTIONS (H2)
+            // ==========================================
+            // Ajoute une petite touche premium : les grands titres apparaissent en glissant vers le haut
+            gsap.utils.toArray("h2").forEach((heading) => {
+                gsap.from(heading, {
+                    scrollTrigger: {
+                        trigger: heading,
+                        start: "top 90%",
+                    },
+                    y: 40,
+                    opacity: 0,
+                    duration: 1,
+                    ease: "power3.out"
+                });
+            });
+    </script>
+</body>
+</html>
