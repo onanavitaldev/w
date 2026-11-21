@@ -1,0 +1,52 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #FBFBFA;
+    color: #1A1A1A;
+    overflow-x: hidden;
+    cursor: default;
+}
+
+.font-display {
+    font-family: 'Syne', sans-serif;
+}
+
+.text-stroke {
+    -webkit-text-stroke: 1px rgba(26, 26, 26, 0.25);
+    color: transparent;
+}
+
+.logo-o {
+    display: inline-block;
+    width: 1.5em;
+    height: 0.70em;
+    border: 0.12em solid currentColor;
+    border-radius: 999px;
+    vertical-align: middle;
+    margin: 0 0.05em;
+}
+
+.logo-o-filled {
+    display: inline-block;
+    width: 1.5em;
+    height: 0.75em;
+    background-color: #1A1A1A;
+    border: 10px solid #9cee20;
+    border-radius: 999px;
+    vertical-align: middle;
+    margin: 0 0.07em;
+}
+
+#custom-cursor {
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #1A1A1A;
+    border-radius: 50%;
+    background-color: rgba(156, 238, 32, 0.2);
+    transition: transform 0.15s ease-out, background-color 0.2s;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+}

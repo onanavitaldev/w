@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vital — Développeur Web & DA</title>
+    <meta name="description" content="Constructeur, architecte web et DA. Sites, landing pages, SaaS et applications web.">
+    <meta name="author" content="VITAL ONANA">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://onanavitaldev.github.io/w/">
+    <meta property="og:title" content="Vital ONANA — Constructeur, Architecte Web & DA">
+    <meta property="og:description" content="Sites, landing pages, SaaS et applications web.">
+    <meta property="og:image" content="https://onanavitaldev.github.io/w/assets/img/me.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        canvas: '#FAFAFA',
+                        darkCanvas: '#0B0B0D',
+                        card: '#FFFFFF',
+                        darkCard: '#141418',
+                        subtle: '#F2F2F4',
+                        darkSubtle: '#1D1D22',
+                        ink: '#111111',
+                        darkInk: '#F5F5F7',
+                        muted: '#8E8E93',
+                        secondary: '#52525B',
+                        darkSecondary: '#A1A1AA',
+                        brand: '#FF5500',
+                        brandHover: '#E04800',
+                        line: '#E4E4E7',
+                        darkLine: '#27272C'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Vue.js 3, GSAP, Motion One, Lenis, Lucide -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/motion@10.16.4/dist/motion.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        html.lenis, html.lenis body {
+            height: auto;
+        }
+        .lenis.lenis-smooth {
+            scroll-behavior: auto !important;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+        /* App design Glassmorphism en Light Mode */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.62);
+            backdrop-filter: blur(22px) saturate(165%);
+            -webkit-backdrop-filter: blur(22px) saturate(165%);
+            border: 1px solid rgba(255, 255, 255, 0.85);
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.9);
+        }
+        .dark .glass-card {
+            background: rgba(22, 22, 27, 0.68);
+            backdrop-filter: blur(22px) saturate(150%);
+            -webkit-backdrop-filter: blur(22px) saturate(150%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
+        }
+        /* Visuels underground : trame halftone, scanlines & repères zine */
+        .underground-halftone {
+            background-image: radial-gradient(rgba(17, 17, 17, 0.09) 1px, transparent 0);
+            background-size: 10px 10px;
+        }
+        .dark .underground-halftone {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 0);
+            background-size: 10px 10px;
+        }
+        .underground-scanlines {
+            background-image: repeating-linear-gradient(
+                to bottom,
+                rgba(255, 255, 255, 0.04) 0px,
+                rgba(255, 255, 255, 0.04) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+        }
+        .crop-corner-tl {
+            border-top: 2px solid #FF5500;
+            border-left: 2px solid #FF5500;
+        }
+        .crop-corner-br {
+            border-bottom: 2px solid #FF5500;
+            border-right: 2px solid #FF5500;
+        }
+        /* Background gradient premium pour la section CTA finale */
+        .cta-premium-gradient {
+            background:
+                radial-gradient(circle at 88% 18%, rgba(255, 85, 0, 0.42) 0%, rgba(255, 85, 0, 0) 52%),
+                radial-gradient(circle at 12% 88%, rgba(255, 138, 0, 0.22) 0%, rgba(255, 138, 0, 0) 48%),
+                linear-gradient(135deg, #16161A 0%, #0E0E11 55%, #1A120E 100%);
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.14);
+        }
+        .dark .cta-premium-gradient {
+            background:
+                radial-gradient(circle at 88% 18%, rgba(255, 85, 0, 0.36) 0%, rgba(255, 85, 0, 0) 54%),
+                radial-gradient(circle at 12% 88%, rgba(234, 88, 12, 0.18) 0%, rgba(234, 88, 12, 0) 48%),
+                linear-gradient(135deg, #141419 0%, #09090B 58%, #1C110B 100%);
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+        }
+        /* Légères lueurs d'ambiance derrière les cartes glassmorphism */
+        .ambient-blob-1 {
+            background: radial-gradient(circle, rgba(255, 85, 0, 0.11) 0%, rgba(255, 85, 0, 0) 70%);
+        }
+        .ambient-blob-2 {
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.09) 0%, rgba(59, 130, 246, 0) 70%);
+        }
+        @media (pointer: fine) {
+            body, a, button {
+                cursor: none !important;
+            }
+        }
+        ::selection {
+            background: #FF5500;
+            color: #FFFFFF;
+        }
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4D4D8;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #2E2E36;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FF5500;
+        }
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-canvas dark:bg-darkCanvas text-ink dark:text-darkInk antialiased selection:bg-brand selection:text-white transition-colors duration-300">
+
+<div id="app" v-cloak class="relative">
+
+    <!-- LUEURS D'AMBIANCE DISCRÈTES POUR LE GLASSMORPHISM -->
+    <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+        <div class="ambient-blob-1 absolute -top-32 -left-24 w-[520px] h-[520px] rounded-full"></div>
+        <div class="ambient-blob-2 absolute top-1/3 -right-32 w-[480px] h-[480px] rounded-full"></div>
+    </div>
+
+    <!-- CURSEUR PERSONNALISÉ -->
+    <div id="cursor-dot" class="hidden md:block fixed top-0 left-0 w-2 h-2 rounded-full bg-brand pointer-events-none z-[100] -translate-x-1/2 -translate-y-1/2"></div>
+    <div id="cursor-ring" class="hidden md:flex fixed top-0 left-0 w-10 h-10 rounded-full border border-ink/40 dark:border-white/35 pointer-events-none z-[99] -translate-x-1/2 -translate-y-1/2 items-center justify-center transition-colors duration-200">
+        <span id="cursor-label" class="text-[9px] font-mono font-bold uppercase tracking-widest text-white opacity-0 transition-opacity duration-150"></span>
+    </div>
+
+    <!-- MENU RIDEAU PLEIN ÉCRAN -->
+    <div
+        id="curtain-menu"
+        class="fixed inset-0 z-50 bg-ink dark:bg-black text-white flex flex-col justify-between px-6 sm:px-12 py-8 pointer-events-none"
+        style="clip-path: inset(0 0 100% 0);"
+    >
+        <div class="max-w-6xl w-full mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <span class="w-2.5 h-2.5 rounded-full bg-brand"></span>
+                <span class="font-mono text-xs uppercase tracking-widest text-neutral-400">Navigation</span>
+            </div>
+            <button
+                @click="toggleMenu"
+                data-cursor="FERMER"
+                class="w-11 h-11 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-brand hover:border-brand transition-colors"
+                aria-label="Fermer le menu"
+            >
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <nav class="max-w-6xl w-full mx-auto my-auto py-8">
+            <ul class="space-y-3 sm:space-y-4">
+                <li v-for="item in navLinks" :key="item.href" class="overflow-hidden">
+                    <a
+                        :href="item.href"
+                        @click.prevent="navigateTo(item.href)"
+                        data-cursor="ALLER"
+                        class="curtain-link group flex items-center gap-4 text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white hover:text-brand transition-colors"
+                    >
+                        <span>{{ item.label }}</span>
+                        <i data-lucide="arrow-up-right" class="w-6 h-6 sm:w-9 sm:h-9 opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-brand"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="max-w-6xl w-full mx-auto pt-6 border-t border-white/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs font-mono text-neutral-400">
+            <div class="flex flex-wrap items-center gap-6">
+                <a href="mailto:onanavital@outlook.com" class="hover:text-white underline underline-offset-4">onanavital@outlook.com</a>
+                <a href="https://wa.me/237652148417" target="_blank" class="text-brand hover:underline">WhatsApp Direct ↗</a>
+            </div>
+            <div class="flex items-center gap-5">
+                <a href="https://github.com/onanavitaldev" target="_blank" class="hover:text-white">GitHub</a>
+                <a href="https://www.linkedin.com/in/onanavital/" target="_blank" class="hover:text-white">LinkedIn</a>
+                <a href="https://x.com/th_vital_?s=11" target="_blank" class="hover:text-white">X / Twitter</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVBAR ARRONDIE FLOTTANTE AU CENTRE (Style Apple / iOS) -->
+    <header class="fixed top-4 left-0 right-0 z-40 px-4 pointer-events-none flex justify-center">
+        <div class="pointer-events-auto glass-card inline-flex items-center gap-2 sm:gap-4 px-3 sm:px-4 py-2 rounded-full">
+            <!-- Marque avec photo du Hero -->
+            <a href="#" @click.prevent="scrollToTop" class="flex items-center gap-2 pl-0.5 pr-1.5 group" aria-label="Accueil">
+                <span class="w-7 h-7 rounded-full overflow-hidden border border-black/15 dark:border-white/20 bg-subtle dark:bg-darkSubtle transition-transform duration-300 group-hover:scale-105">
+                    <img src="assets/img/me.png" alt="Vital ONANA" class="w-full h-full object-cover contrast-125">
+                </span>
+                <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+            </a>
+
+            <span class="hidden md:inline-block w-px h-4 bg-line dark:bg-darkLine"></span>
+
+            <!-- Liens -->
+            <nav class="hidden md:flex items-center gap-1">
+                <a
+                    v-for="item in navLinks"
+                    :key="item.href"
+                    :href="item.href"
+                    @click.prevent="navigateTo(item.href)"
+                    class="px-3.5 py-1.5 rounded-full text-xs font-semibold text-secondary dark:text-darkSecondary hover:text-ink dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
+                >
+                    {{ item.label }}
+                </a>
+            </nav>
+
+            <span class="hidden md:inline-block w-px h-4 bg-line dark:bg-darkLine"></span>
+
+            <!-- Bouton Dark / Light Mode + Menu -->
+            <div class="flex items-center gap-1.5">
+                <button
+                    @click="toggleTheme"
+                    :data-cursor="isDark ? 'LIGHT' : 'DARK'"
+                    class="w-8 h-8 rounded-full bg-black/5 dark:bg-white/10 hover:bg-brand hover:text-white flex items-center justify-center text-ink dark:text-white transition-colors"
+                    aria-label="Changer de thème"
+                >
+                    <i :data-lucide="isDark ? 'sun' : 'moon'" class="w-3.5 h-3.5"></i>
+                </button>
+                <button
+                    @click="toggleMenu"
+                    data-cursor="MENU"
+                    class="w-8 h-8 rounded-full bg-black/5 dark:bg-white/10 hover:bg-ink dark:hover:bg-white hover:text-white dark:hover:text-ink flex items-center justify-center text-ink dark:text-white transition-colors"
+                    aria-label="Ouvrir le menu"
+                >
+                    <i data-lucide="align-right" class="w-3.5 h-3.5"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- BOUTON WHATSAPP STATIQUE EN BAS DE LA PAGE AU SCROLL -->
+    <a
+        ref="whatsappDockBtn"
+        href="https://wa.me/237652148417"
+        target="_blank"
+        data-cursor="WHATSAPP"
+        class="motion-btn fixed bottom-5 right-5 z-40 inline-flex items-center gap-2 px-4 py-3 rounded-full bg-ink dark:bg-white text-white dark:text-ink text-xs font-semibold hover:bg-brand dark:hover:bg-brand dark:hover:text-white border border-black/10 dark:border-white/15 transition-colors"
+    >
+        <i data-lucide="message-circle" class="w-4 h-4 text-brand"></i>
+        <span>WhatsApp</span>
+    </a>
+
+    <main class="max-w-6xl mx-auto px-5 sm:px-8 pt-28 sm:pt-32 pb-24 space-y-24">
+
+        <!-- HERO (Titre court & direct avec DA + touche zine underground) -->
+        <section class="relative space-y-12">
+            <!-- Repères d'angle underground discrets -->
+            <div class="hidden sm:block pointer-events-none absolute -top-4 -left-4 w-5 h-5 crop-corner-tl opacity-70"></div>
+
+            <div class="max-w-3xl space-y-7">
+                <div class="hero-stagger inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest text-secondary dark:text-darkSecondary">
+                    <span class="px-2 py-0.5 border border-ink/20 dark:border-white/20 bg-black/[0.03] dark:bg-white/[0.04]">2006.PRESS</span>
+                    <span>// ARCHIVE &amp; STUDIO</span>
+                </div>
+
+                <h1 class="hero-stagger text-4xl sm:text-6xl lg:text-[62px] font-extrabold tracking-tight leading-[1.08] text-ink dark:text-white">
+                    <span class="block">
+                        ONANA Vital
+                        <span class="inline-flex align-middle mx-1.5 -mt-2 w-11 h-11 sm:w-14 sm:h-14 rounded-2xl overflow-hidden bg-subtle dark:bg-darkSubtle rotate-[-3deg] relative">
+                            <img src="assets/img/me.png" alt="Vital ONANA" class="w-full h-full object-cover contrast-125">
+                            <span class="pointer-events-none absolute inset-0 underground-scanlines"></span>
+                        </span>
+                    </span>
+                    <span class="flex flex-wrap items-center gap-x-3 gap-y-2 mt-1">
+                        <span class="text-muted font-bold">Développeur,</span>
+                        <span class="text-ink dark:text-white">Web &amp;</span>
+                        <span class="text-brand">DA.</span>
+                    </span>
+                </h1>
+
+                <p class="hero-stagger text-base sm:text-lg text-secondary dark:text-darkSecondary max-w-xl leading-relaxed">
+                    Sites vitrines, landing pages, SaaS et applications web, de la direction artistique jusqu'à la mise en production.
+                </p>
+
+                <div class="hero-stagger flex flex-wrap items-center gap-3 pt-1">
+                    <a
+                        href="#portfolio"
+                        @click.prevent="navigateTo('#portfolio')"
+                        data-cursor="PROJETS"
+                        class="motion-btn inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-ink dark:bg-white text-white dark:text-ink text-sm font-semibold hover:bg-brand dark:hover:bg-brand dark:hover:text-white transition-colors"
+                    >
+                        <span>Voir mes drops</span>
+                        <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                    </a>
+                    <span class="inline-flex items-center gap-2 px-3.5 py-2 rounded-full glass-card text-xs font-medium text-ink dark:text-white">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                        Disponible
+                    </span>
+                </div>
+            </div>
+
+            <!-- BENTO GLASSMORPHISM GRID + VISUELS UNDERGROUND -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-5 pt-2">
+                <!-- Parcours (2006 Projects) -->
+                <div class="smooth-card glass-card underground-halftone md:col-span-4 rounded-3xl p-6 hover:border-brand/40 transition-colors duration-300 flex flex-col justify-between relative overflow-hidden">
+                    <div>
+                        <div class="flex items-center justify-between mb-5">
+                            <span class="inline-block px-3 py-1 rounded-full bg-black/5 dark:bg-white/10 text-xs font-semibold">
+                                Parcours
+                            </span>
+                            <span class="font-mono text-[10px] tracking-wider uppercase px-2 py-0.5 border border-brand/50 text-brand -rotate-2">
+                                BOOTLEG &amp; BUILD
+                            </span>
+                        </div>
+                        <div class="relative pl-5 border-l border-dashed border-ink/25 dark:border-white/20 space-y-4">
+                            <div class="relative">
+                                <span class="absolute -left-[25px] top-1.5 w-2.5 h-2.5 rounded-full bg-brand"></span>
+                                <div class="text-sm font-bold">Fondateur @ 2006 Projects</div>
+                                <div class="text-xs text-muted">2026 — Studio digital &amp; Produits Web</div>
+                            </div>
+                            <div class="relative">
+                                <span class="absolute -left-[25px] top-1.5 w-2.5 h-2.5 rounded-full bg-ink dark:bg-white"></span>
+                                <div class="text-sm font-bold">Lead Dev &amp; CTO @ EduLabX</div>
+                                <div class="text-xs text-muted">2026 — EdTech &amp; IA</div>
+                            </div>
+                            <div class="relative">
+                                <span class="absolute -left-[25px] top-1.5 w-2.5 h-2.5 rounded-full bg-neutral-400"></span>
+                                <div class="text-sm font-bold">Architecte Web &amp; DA Freelance</div>
+                                <div class="text-xs text-muted">Sites, SaaS &amp; Apps Web</div>
+                            </div>
+                            <div class="relative">
+                                <span class="absolute -left-[25px] top-1.5 w-2.5 h-2.5 rounded-full bg-neutral-300 dark:bg-neutral-600"></span>
+                                <div class="text-sm font-bold">Fondateur @ WebByte Agency</div>
+                                <div class="text-xs text-muted">2023 – 2025 — Agence Web</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-line/70 dark:border-darkLine flex items-center justify-between text-xs text-secondary dark:text-darkSecondary">
+                        <span>+5 ans d'exp.</span>
+                        <span class="font-mono font-semibold text-ink dark:text-white">+20 projets</span>
+                    </div>
+                </div>
+
+                <!-- Stack -->
+                <div class="smooth-card glass-card underground-halftone md:col-span-4 rounded-3xl p-6 hover:border-brand/40 transition-colors duration-300 flex flex-col justify-between overflow-hidden relative">
+                    <div class="flex items-center justify-between">
+                        <span class="inline-block px-3 py-1 rounded-full bg-black/5 dark:bg-white/10 text-xs font-semibold">
+                            Stack
+                        </span>
+                        <span class="text-xs font-mono text-muted">Vue.js • Tailwind • GSAP</span>
+                    </div>
+
+                    <div class="relative h-44 flex items-center justify-center my-2">
+                        <div class="w-24 h-28 rounded-2xl bg-white/75 dark:bg-white/5 border border-ink/15 dark:border-white/15 flex flex-col items-center justify-center -rotate-12 -mr-4 transition-transform duration-300 hover:-translate-y-1.5 relative">
+                            <span class="font-mono text-[9px] text-muted absolute top-2 left-2.5">[01]</span>
+                            <i data-lucide="wind" class="w-6 h-6 text-sky-500 mb-1.5"></i>
+                            <span class="text-[11px] font-bold">Tailwind</span>
+                        </div>
+                        <div class="z-10 w-28 h-32 rounded-2xl bg-ink dark:bg-white text-white dark:text-ink flex flex-col items-center justify-center transition-transform duration-300 hover:-translate-y-1.5 relative">
+                            <span class="font-mono text-[9px] text-brand absolute top-2 left-2.5">[CORE]</span>
+                            <i data-lucide="layers" class="w-7 h-7 text-brand mb-1.5"></i>
+                            <span class="text-xs font-bold">Vue.js 3</span>
+                            <span class="text-[10px] opacity-70 mt-0.5">+ GSAP</span>
+                        </div>
+                        <div class="w-24 h-28 rounded-2xl bg-white/75 dark:bg-white/5 border border-ink/15 dark:border-white/15 flex flex-col items-center justify-center rotate-12 -ml-4 transition-transform duration-300 hover:-translate-y-1.5 relative">
+                            <span class="font-mono text-[9px] text-muted absolute top-2 left-2.5">[03]</span>
+                            <i data-lucide="database" class="w-6 h-6 text-emerald-500 mb-1.5"></i>
+                            <span class="text-[11px] font-bold">API PHP / MySQL</span>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <div class="text-sm font-bold">DA &amp; Ingénierie</div>
+                        <div class="text-xs font-mono text-secondary dark:text-darkSecondary mt-0.5">RAW BUILD // 2006</div>
+                    </div>
+                </div>
+
+                <!-- Base & Liens -->
+                <div class="smooth-card glass-card underground-halftone md:col-span-4 rounded-3xl p-6 hover:border-brand/40 transition-colors duration-300 flex flex-col justify-between relative overflow-hidden">
+                    <div class="flex items-center justify-between">
+                        <span class="inline-block px-3 py-1 rounded-full bg-black/5 dark:bg-white/10 text-xs font-semibold">
+                            Localisation
+                        </span>
+                        <span class="inline-flex items-center gap-1 text-xs font-mono text-secondary dark:text-darkSecondary">
+                            <i data-lucide="globe" class="w-3.5 h-3.5 text-brand"></i>
+                            UTC+1
+                        </span>
+                    </div>
+
+                    <div class="my-4 p-4 rounded-2xl bg-black/[0.04] dark:bg-white/[0.04] border border-dashed border-ink/20 dark:border-white/15 space-y-2 relative">
+                        <div class="flex items-center justify-between text-xs font-mono text-secondary dark:text-darkSecondary">
+                            <span class="inline-flex items-center gap-1.5">
+                                <i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand"></i>
+                                <span>Yaoundé — Remote Work</span>
+                            </span>
+                            <span class="text-[10px] text-brand">LIVE</span>
+                        </div>
+                        <p class="text-sm font-semibold leading-snug">
+                            De la DA au produit en ligne.
+                        </p>
+                    </div>
+
+                    <div class="flex items-center justify-between pt-2">
+                        <div class="flex items-center gap-2">
+                            <a href="https://github.com/onanavitaldev" target="_blank" class="w-9 h-9 rounded-full bg-black/5 dark:bg-white/10 hover:bg-brand hover:text-white flex items-center justify-center transition-colors" aria-label="GitHub">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/onanavital/" target="_blank" class="w-9 h-9 rounded-full bg-black/5 dark:bg-white/10 hover:bg-brand hover:text-white flex items-center justify-center transition-colors" aria-label="LinkedIn">
+                                <i data-lucide="linkedin" class="w-4 h-4"></i>
+                            </a>
+                            <a href="https://x.com/th_vital_?s=11" target="_blank" class="w-9 h-9 rounded-full bg-black/5 dark:bg-white/10 hover:bg-brand hover:text-white flex items-center justify-center transition-colors" aria-label="X">
+                                <i data-lucide="twitter" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                        <a href="#portfolio" @click.prevent="navigateTo('#portfolio')" class="text-xs font-bold hover:text-brand inline-flex items-center gap-1 transition-colors">
+                            <span>Mes projets</span>
+                            <i data-lucide="arrow-down-right" class="w-3.5 h-3.5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERTISES -->
+        <section id="services" class="space-y-8">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+                <div>
+                    <span class="font-mono text-[11px] uppercase tracking-widest text-brand block mb-1">// SPEC.SHEET</span>
+                    <h2 class="text-3xl sm:text-6xl font-extrabold tracking-tight">
+                        Expertises <span class="text-muted">&amp; Rôles</span>
+                    </h2>
+                </div>
+                <p class="text-sm text-secondary dark:text-darkSecondary">Direction Artistique, architecture web et apps.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div v-for="service in services" :key="service.title" class="smooth-card glass-card rounded-3xl p-7 hover:border-brand/40 transition-colors duration-300 flex flex-col justify-between group relative overflow-hidden">
+                    <div>
+                        <div class="flex items-center justify-between mb-5">
+                            <div class="w-11 h-11 rounded-full bg-black/5 dark:bg-white/10 group-hover:bg-brand group-hover:text-white flex items-center justify-center transition-colors duration-300">
+                                <i :data-lucide="service.icon" class="w-5 h-5"></i>
+                            </div>
+                            <span class="font-mono text-[10px] uppercase tracking-widest text-muted">{{ service.code }}</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 group-hover:text-brand transition-colors">
+                            {{ service.title }}
+                        </h3>
+                        <p class="text-sm text-secondary dark:text-darkSecondary leading-relaxed mb-5">
+                            {{ service.description }}
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-4 border-t border-line/70 dark:border-darkLine">
+                        <span v-for="tag in service.tags" :key="tag" class="px-3 py-1 rounded-full bg-black/5 dark:bg-white/10 text-xs font-medium">
+                            {{ tag }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- SECTION PROJETS : GSAP SCRUBBED BENTO GALLERY + SCANLINES UNDERGROUND -->
+    <section id="portfolio" ref="portfolioSection" class="relative min-h-screen bg-ink dark:bg-black text-white border-y border-line/20 flex flex-col justify-center overflow-hidden py-14 sm:py-16">
+        <div class="max-w-6xl w-full mx-auto px-5 sm:px-8 space-y-8 relative">
+            <div class="hidden sm:block pointer-events-none absolute -top-2 right-8 w-5 h-5 crop-corner-br opacity-80"></div>
+
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                <div>
+                    <p class="text-xs font-mono uppercase tracking-widest text-neutral-400 mb-2">
+                        // DROP ARCHIVE — Scrollez pour assembler
+                    </p>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
+                        Projets <span class="text-brand">Sélectionnés</span>
+                    </h2>
+                </div>
+
+                <div class="flex flex-wrap gap-2">
+                    <button
+                        v-for="cat in categories"
+                        :key="cat.id"
+                        @click="setFilter(cat.id)"
+                        :class="[
+                            'px-4 py-2 rounded-full text-xs font-semibold transition-colors duration-200',
+                            activeCategory === cat.id
+                                ? 'bg-brand text-white'
+                                : 'bg-white/10 text-neutral-300 hover:bg-white/20 hover:text-white'
+                        ]"
+                    >
+                        {{ cat.label }}
+                    </button>
+                </div>
+            </div>
+
+            <div ref="bentoGallery" class="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-5">
+                <a
+                    v-for="project in filteredProjects"
+                    :key="project.title"
+                    :href="project.url"
+                    target="_blank"
+                    data-cursor="VOIR"
+                    :class="[
+                        'scrub-bento-item group relative rounded-[28px] overflow-hidden border border-white/15 bg-neutral-900 flex flex-col justify-end min-h-[260px] sm:min-h-[300px]',
+                        project.spanClass
+                    ]"
+                >
+                    <img
+                        :src="project.image"
+                        :alt="project.title"
+                        class="scrub-bento-img absolute inset-0 w-full h-full object-cover opacity-75 group-hover:opacity-95 group-hover:scale-105 transition-all duration-700"
+                    >
+                    <div class="pointer-events-none absolute inset-0 underground-scanlines opacity-70"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-transparent"></div>
+
+                    <div class="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
+                        <div class="flex items-center gap-2">
+                            <span class="px-3 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/15 text-[11px] font-medium text-white">
+                                {{ project.badge }}
+                            </span>
+                            <span class="hidden sm:inline-block font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 bg-brand/90 text-white">
+                                {{ project.tagCode }}
+                            </span>
+                        </div>
+                        <span class="w-9 h-9 rounded-full bg-white text-ink group-hover:bg-brand group-hover:text-white flex items-center justify-center transition-colors">
+                            <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                        </span>
+                    </div>
+
+                    <div class="relative z-10 p-6 flex items-end justify-between gap-4">
+                        <div class="space-y-1 max-w-md">
+                            <h3 class="text-xl sm:text-2xl font-extrabold tracking-tight text-white group-hover:text-brand transition-colors">
+                                {{ project.title }}
+                            </h3>
+                            <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed">
+                                {{ project.description }}
+                            </p>
+                        </div>
+                        <span class="hidden sm:inline-block font-mono text-[11px] text-neutral-400 shrink-0">
+                            {{ project.stack }}
+                        </span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="w-full h-1 bg-white/15 rounded-full overflow-hidden">
+                <div ref="progressBar" class="h-full bg-brand w-0"></div>
+            </div>
+        </div>
+    </section>
+
+    <main class="max-w-6xl mx-auto px-5 sm:px-8 pt-24 pb-24 space-y-24">
+
+        <!-- MÉTHODE & CHIFFRES -->
+        <section id="lab" class="smooth-card glass-card underground-halftone rounded-[32px] p-8 sm:p-12 relative overflow-hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                <div class="lg:col-span-6 space-y-5">
+                    <span class="font-mono text-[11px] uppercase tracking-widest text-brand">// BENCHMARK &amp; CADENCE</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+                        Exécution nette, <span class="text-muted">zéro détour.</span>
+                    </h2>
+                    <p class="text-sm sm:text-base text-secondary dark:text-darkSecondary leading-relaxed">
+                        DA, architecture web et développement sur-mesure.
+                    </p>
+                    <ul class="space-y-3 pt-1 text-sm font-medium">
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="check" class="w-4 h-4 text-brand"></i>
+                            <span>100% code custom</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="check" class="w-4 h-4 text-brand"></i>
+                            <span>DA &amp; motion GSAP</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="check" class="w-4 h-4 text-brand"></i>
+                            <span>Stripe, Mobile Money</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="lg:col-span-6 grid grid-cols-2 gap-4">
+                    <div class="rounded-3xl bg-black/[0.03] dark:bg-white/[0.04] border border-line/70 dark:border-darkLine p-6 text-center space-y-1">
+                        <div class="text-3xl sm:text-4xl font-extrabold">95%</div>
+                        <div class="text-xs text-secondary dark:text-darkSecondary">Lighthouse</div>
+                    </div>
+                    <div class="rounded-3xl bg-black/[0.03] dark:bg-white/[0.04] border border-line/70 dark:border-darkLine p-6 text-center space-y-1">
+                        <div class="text-3xl sm:text-4xl font-extrabold text-brand">+20</div>
+                        <div class="text-xs text-secondary dark:text-darkSecondary">Projets</div>
+                    </div>
+                    <div class="rounded-3xl bg-black/[0.03] dark:bg-white/[0.04] border border-line/70 dark:border-darkLine p-6 text-center space-y-1">
+                        <div class="text-3xl sm:text-4xl font-extrabold">05 Jours</div>
+                        <div class="text-xs text-secondary dark:text-darkSecondary">Sprint MVP</div>
+                    </div>
+                    <div class="rounded-3xl bg-black/[0.03] dark:bg-white/[0.04] border border-line/70 dark:border-darkLine p-6 text-center space-y-1">
+                        <div class="text-3xl sm:text-4xl font-extrabold">24h</div>
+                        <div class="text-xs text-secondary dark:text-darkSecondary">Réponse</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA DIRECT AVEC GRADIENT PREMIUM -->
+        <section id="contact" class="smooth-card cta-premium-gradient text-white rounded-[32px] p-8 sm:p-14 border border-white/15 relative overflow-hidden">
+            <div class="pointer-events-none absolute top-5 right-5 font-mono text-[10px] uppercase tracking-widest text-white/40">
+                LINE.OPEN // 2006
+            </div>
+            <div class="max-w-3xl space-y-6 relative z-10">
+                <h2 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.08]">
+                    Un projet en tête ? <br>
+                    <span class="text-brand">Construisons-le.</span>
+                </h2>
+                <p class="text-sm sm:text-base text-neutral-300 max-w-md">
+                    Contact direct sur WhatsApp ou par email.
+                </p>
+
+                <div class="flex flex-wrap items-center gap-4 pt-2">
+                    <a
+                        href="https://wa.me/237652148417"
+                        target="_blank"
+                        data-cursor="WHATSAPP"
+                        class="motion-btn inline-flex items-center gap-2.5 px-7 py-4 rounded-full bg-brand text-white text-sm font-semibold hover:bg-brandHover transition-colors"
+                    >
+                        <i data-lucide="message-circle" class="w-4 h-4"></i>
+                        <span>WhatsApp</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                    </a>
+
+                    <a
+                        href="mailto:onanavital@outlook.com"
+                        data-cursor="EMAIL"
+                        class="motion-btn inline-flex items-center gap-2.5 px-7 py-4 rounded-full bg-white text-ink text-sm font-semibold hover:bg-neutral-200 transition-colors"
+                    >
+                        <i data-lucide="mail" class="w-4 h-4"></i>
+                        <span>onanavital@outlook.com</span>
+                    </a>
+
+                    <button
+                        @click="copyEmail"
+                        data-cursor="COPIER"
+                        class="inline-flex items-center gap-2 px-5 py-4 rounded-full border border-white/25 bg-black/25 backdrop-blur-md text-xs font-mono text-neutral-200 hover:border-white hover:text-white transition-colors"
+                    >
+                        <i :data-lucide="copied ? 'check' : 'copy'" class="w-3.5 h-3.5 text-brand"></i>
+                        <span>{{ copied ? 'Copié' : 'Copier' }}</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-line dark:border-darkLine glass-card py-10 px-5 sm:px-8">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-secondary dark:text-darkSecondary">
+            <div class="font-mono">
+                © 2026 Vital ONANA — 2006 Projects
+            </div>
+            <div class="flex items-center gap-6 font-medium">
+                <a href="https://github.com/onanavitaldev" target="_blank" class="hover:text-ink dark:hover:text-white transition-colors">GitHub</a>
+                <a href="https://www.linkedin.com/in/onanavital/" target="_blank" class="hover:text-ink dark:hover:text-white transition-colors">LinkedIn</a>
+                <a href="https://x.com/th_vital_?s=11" target="_blank" class="hover:text-ink dark:hover:text-white transition-colors">X / Twitter</a>
+                <a href="https://www.instagram.com/o.t.vital" target="_blank" class="hover:text-ink dark:hover:text-white transition-colors">Instagram</a>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script>
+    const { createApp, ref, computed, onMounted, nextTick } = Vue;
+
+    createApp({
+        setup() {
+            const isDark = ref(false);
+            const menuOpen = ref(false);
+            const activeCategory = ref('all');
+            const copied = ref(false);
+            const portfolioSection = ref(null);
+            const bentoGallery = ref(null);
+            const progressBar = ref(null);
+            const whatsappDockBtn = ref(null);
+
+            let lenis = null;
+            let bentoTimeline = null;
+
+            const navLinks = [
+                { label: 'Expertises', href: '#services' },
+                { label: 'Projets', href: '#portfolio' },
+                { label: 'Méthode', href: '#lab' },
+                { label: 'Contact', href: '#contact' }
+            ];
+
+            const categories = [
+                { id: 'all', label: 'Tous' },
+                { id: 'saas', label: 'SaaS' },
+                { id: 'landing', label: 'Landing' },
+                { id: 'vitrine', label: 'Vitrine' },
+                { id: 'appweb', label: 'Apps Web' }
+            ];
+
+            const services = [
+                {
+                    title: 'Architecture Web & Sites',
+                    icon: 'layout',
+                    code: 'MOD.WEB',
+                    description: 'Sites vitrines et landing pages rapides, structurés pour convertir.',
+                    tags: ['Vue.js', 'Tailwind CSS', 'SEO']
+                },
+                {
+                    title: 'DA & Systèmes Visuels',
+                    icon: 'palette',
+                    code: 'MOD.DA',
+                    description: 'Identité visuelle, typographie, grilles bento et motion GSAP.',
+                    tags: ['DA', 'GSAP', 'UI / UX']
+                },
+                {
+                    title: 'Applications Web & SaaS',
+                    icon: 'layers',
+                    code: 'MOD.SAAS',
+                    description: 'Produits web complets, tableaux de bord et paiements.',
+                    tags: ['Vue.js', 'PHP / API', 'Stripe', 'Mobile Money']
+                },
+                {
+                    title: 'MVP & Studio 2006 Projects',
+                    icon: 'zap',
+                    code: 'MOD.2006',
+                    description: 'Prototypage rapide et lancement de produits sur-mesure.',
+                    tags: ['2006 Projects', 'Sprint 48H', 'Sur-mesure']
+                }
+            ];
+
+            const projects = [
+                {
+                    title: 'PharmaFlow',
+                    category: 'saas',
+                    badge: 'SaaS',
+                    tagCode: 'DROP.01',
+                    description: 'Suivi de péremption pharmaceutique et métriques en temps réel.',
+                    stack: 'Vue.js • Tailwind',
+                    url: 'https://webbyteagency.github.io/pharmaflow/',
+                    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80',
+                    spanClass: 'md:col-span-7'
+                },
+                {
+                    title: 'EduLabX',
+                    category: 'appweb',
+                    badge: 'App Web',
+                    tagCode: 'DROP.02',
+                    description: 'Analyse d’expériences scientifiques et résultats assistés par IA.',
+                    stack: 'Web App • IA',
+                    url: 'https://myedulabx.com',
+                    image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1000&q=80',
+                    spanClass: 'md:col-span-5'
+                },
+                {
+                    title: 'G La Dalle',
+                    category: 'landing',
+                    badge: 'Concept DA',
+                    tagCode: 'DROP.03',
+                    description: 'Refonte néo-rétro avec carrousel central et commande rapide.',
+                    stack: 'Vue.js 3 • GSAP',
+                    url: 'https://onanavitaldev.github.io/gladalle/',
+                    image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1000&q=80',
+                    spanClass: 'md:col-span-4'
+                },
+                {
+                    title: 'Stalkee',
+                    category: 'saas',
+                    badge: 'SaaS',
+                    tagCode: 'DROP.04',
+                    description: 'Analyse client-side de conversations WhatsApp exportées.',
+                    stack: 'JS • Data Viz',
+                    url: 'https://2006projects.github.io/stalkee/',
+                    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=80',
+                    spanClass: 'md:col-span-4'
+                },
+                {
+                    title: 'EEnerjy',
+                    category: 'vitrine',
+                    badge: 'Vitrine',
+                    tagCode: 'DROP.05',
+                    description: 'Site vitrine ingénierie électrique, domotique et informatique.',
+                    stack: 'HTML5 • Tailwind • GSAP',
+                    url: 'https://eenerjy.com',
+                    image: 'https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=1000&q=80',
+                    spanClass: 'md:col-span-4'
+                },
+                {
+                    title: 'Insomio',
+                    category: 'landing',
+                    badge: 'Landing',
+                    tagCode: 'DROP.06',
+                    description: 'Landing page créative pour agence marketing digitale.',
+                    stack: 'Tailwind • Motion',
+                    url: 'https://onanavitaldev.github.io/insomio/',
+                    image: 'https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1000&q=80',
+                    spanClass: 'md:col-span-12'
+                }
+            ];
+
+            const filteredProjects = computed(() => {
+                if (activeCategory.value === 'all') return projects;
+                return projects.filter(p => p.category === activeCategory.value).map(p => ({
+                    ...p,
+                    spanClass: 'md:col-span-6'
+                }));
+            });
+
+            const toggleTheme = async () => {
+                isDark.value = !isDark.value;
+                document.documentElement.classList.toggle('dark', isDark.value);
+                await nextTick();
+                lucide.createIcons();
+            };
+
+            const toggleMenu = () => {
+                const curtain = document.getElementById('curtain-menu');
+                if (!menuOpen.value) {
+                    menuOpen.value = true;
+                    if (lenis) lenis.stop();
+                    curtain.style.pointerEvents = 'auto';
+                    gsap.fromTo(curtain,
+                        { clipPath: 'inset(0 0 100% 0)' },
+                        { clipPath: 'inset(0 0 0% 0)', duration: 0.75, ease: 'power4.inOut' }
+                    );
+                    gsap.fromTo('.curtain-link',
+                        { y: 70, opacity: 0 },
+                        { y: 0, opacity: 1, duration: 0.65, stagger: 0.08, delay: 0.25, ease: 'power3.out' }
+                    );
+                } else {
+                    menuOpen.value = false;
+                    gsap.to(curtain, {
+                        clipPath: 'inset(0 0 100% 0)',
+                        duration: 0.6,
+                        ease: 'power4.inOut',
+                        onComplete: () => {
+                            curtain.style.pointerEvents = 'none';
+                            if (lenis) lenis.start();
+                        }
+                    });
+                }
+            };
+
+            const navigateTo = (selector) => {
+                if (menuOpen.value) toggleMenu();
+                setTimeout(() => {
+                    if (lenis) {
+                        lenis.scrollTo(selector, { duration: 1.5 });
+                    } else {
+                        document.querySelector(selector)?.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }, menuOpen.value ? 300 : 50);
+            };
+
+            const scrollToTop = () => {
+                if (lenis) lenis.scrollTo(0, { duration: 1.4 });
+            };
+
+            // GSAP Scrubbed Bento Gallery
+            const setupScrubbedBentoGallery = () => {
+                if (bentoTimeline) {
+                    if (bentoTimeline.scrollTrigger) bentoTimeline.scrollTrigger.kill();
+                    bentoTimeline.kill();
+                }
+
+                const section = portfolioSection.value;
+                const gallery = bentoGallery.value;
+                const bar = progressBar.value;
+                if (!section || !gallery) return;
+
+                const items = Array.from(gallery.querySelectorAll('.scrub-bento-item'));
+                const imgs = Array.from(gallery.querySelectorAll('.scrub-bento-img'));
+
+                const offsets = [
+                    { x: -80, y: 50, rotation: -2 },
+                    { x: 80, y: 50, rotation: 2 },
+                    { x: -60, y: 80, rotation: -1.5 },
+                    { x: 0, y: 95, rotation: 0 },
+                    { x: 60, y: 80, rotation: 1.5 },
+                    { x: 0, y: 100, rotation: 0 }
+                ];
+
+                items.forEach((item, i) => {
+                    const off = offsets[i % offsets.length];
+                    gsap.set(item, {
+                        x: off.x,
+                        y: off.y,
+                        rotation: off.rotation,
+                        scale: 0.88,
+                        opacity: 0.15
+                    });
+                });
+
+                gsap.set(imgs, { scale: 1.18 });
+                if (bar) gsap.set(bar, { width: '0%' });
+
+                bentoTimeline = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: section,
+                        pin: true,
+                        scrub: 1.2,
+                        start: 'top top',
+                        end: '+=140%',
+                        invalidateOnRefresh: true,
+                        onUpdate: (self) => {
+                            if (bar) bar.style.width = `${(self.progress * 100).toFixed(1)}%`;
+                        }
+                    }
+                });
+
+                bentoTimeline
+                    .to(items, {
+                        x: 0,
+                        y: 0,
+                        rotation: 0,
+                        scale: 1,
+                        opacity: 1,
+                        stagger: 0.08,
+                        ease: 'power2.out'
+                    }, 0)
+                    .to(imgs, {
+                        scale: 1,
+                        stagger: 0.08,
+                        ease: 'power2.out'
+                    }, 0);
+            };
+
+            const setFilter = async (catId) => {
+                activeCategory.value = catId;
+                await nextTick();
+                lucide.createIcons();
+                bindCustomCursor();
+                setupScrubbedBentoGallery();
+                ScrollTrigger.refresh();
+            };
+
+            const copyEmail = async () => {
+                try {
+                    await navigator.clipboard.writeText('onanavital@outlook.com');
+                    copied.value = true;
+                    await nextTick();
+                    lucide.createIcons();
+                    setTimeout(async () => {
+                        copied.value = false;
+                        await nextTick();
+                        lucide.createIcons();
+                    }, 2200);
+                } catch (e) {}
+            };
+
+            const bindCustomCursor = () => {
+                const dot = document.getElementById('cursor-dot');
+                const ring = document.getElementById('cursor-ring');
+                const label = document.getElementById('cursor-label');
+                if (!dot || !ring || window.matchMedia('(pointer: coarse)').matches) return;
+
+                document.querySelectorAll('a, button, [data-cursor]').forEach((el) => {
+                    if (el.dataset.cursorBound) return;
+                    el.dataset.cursorBound = 'true';
+
+                    el.addEventListener('mouseenter', () => {
+                        const text = el.getAttribute('data-cursor');
+                        if (text) {
+                            label.textContent = text;
+                            label.style.opacity = '1';
+                            gsap.to(ring, {
+                                width: 72,
+                                height: 72,
+                                backgroundColor: '#FF5500',
+                                borderColor: '#FF5500',
+                                duration: 0.25,
+                                ease: 'power2.out'
+                            });
+                            gsap.to(dot, { opacity: 0, duration: 0.15 });
+                        } else {
+                            gsap.to(ring, {
+                                width: 52,
+                                height: 52,
+                                borderColor: '#FF5500',
+                                duration: 0.25
+                            });
+                        }
+                    });
+
+                    el.addEventListener('mouseleave', () => {
+                        label.style.opacity = '0';
+                        gsap.to(ring, {
+                            width: 40,
+                            height: 40,
+                            backgroundColor: 'transparent',
+                            borderColor: isDark.value ? 'rgba(255,255,255,0.35)' : 'rgba(17,17,17,0.4)',
+                            duration: 0.25,
+                            ease: 'power2.out'
+                        });
+                        gsap.to(dot, { opacity: 1, duration: 0.15 });
+                    });
+                });
+            };
+
+            onMounted(() => {
+                lucide.createIcons();
+                gsap.registerPlugin(ScrollTrigger);
+
+                // Scroll lourd & fluide (Lenis)
+                if (window.Lenis) {
+                    lenis = new Lenis({
+                        lerp: 0.06,
+                        wheelMultiplier: 0.75,
+                        smoothWheel: true
+                    });
+                    lenis.on('scroll', ScrollTrigger.update);
+                    gsap.ticker.add((time) => {
+                        lenis.raf(time * 1000);
+                    });
+                    gsap.ticker.lagSmoothing(0);
+                }
+
+                // Bouton WhatsApp qui se fixe doucement en bas de l'écran au scroll
+                const waBtn = whatsappDockBtn.value;
+                if (waBtn) {
+                    gsap.set(waBtn, { y: 18, opacity: 0.85 });
+                    ScrollTrigger.create({
+                        start: 90,
+                        onEnter: () => gsap.to(waBtn, { y: 0, opacity: 1, duration: 0.45, ease: 'power3.out' }),
+                        onLeaveBack: () => gsap.to(waBtn, { y: 18, opacity: 0.85, duration: 0.4, ease: 'power2.out' })
+                    });
+                }
+
+                // Curseur personnalisé
+                const dot = document.getElementById('cursor-dot');
+                const ring = document.getElementById('cursor-ring');
+                if (dot && ring && window.matchMedia('(pointer: fine)').matches) {
+                    const xDot = gsap.quickTo(dot, 'x', { duration: 0.12, ease: 'power3' });
+                    const yDot = gsap.quickTo(dot, 'y', { duration: 0.12, ease: 'power3' });
+                    const xRing = gsap.quickTo(ring, 'x', { duration: 0.35, ease: 'power3' });
+                    const yRing = gsap.quickTo(ring, 'y', { duration: 0.35, ease: 'power3' });
+
+                    window.addEventListener('mousemove', (e) => {
+                        xDot(e.clientX);
+                        yDot(e.clientY);
+                        xRing(e.clientX);
+                        yRing(e.clientY);
+                    });
+                    bindCustomCursor();
+                }
+
+                // Entrées légères & fluides au scroll
+                gsap.from('.hero-stagger', {
+                    y: 20,
+                    opacity: 0,
+                    duration: 0.8,
+                    stagger: 0.1,
+                    ease: 'power2.out'
+                });
+
+                gsap.utils.toArray('.smooth-card').forEach((card, i) => {
+                    gsap.from(card, {
+                        scrollTrigger: {
+                            trigger: card,
+                            start: 'top 92%',
+                            once: true
+                        },
+                        y: 18,
+                        opacity: 0,
+                        duration: 0.65,
+                        delay: (i % 3) * 0.06,
+                        ease: 'power2.out'
+                    });
+                });
+
+                setupScrubbedBentoGallery();
+                window.addEventListener('resize', () => ScrollTrigger.refresh());
+
+                if (window.Motion) {
+                    document.querySelectorAll('.motion-btn').forEach((btn) => {
+                        btn.addEventListener('pointerenter', () => {
+                            Motion.animate(btn, { scale: 1.03 }, { easing: Motion.spring({ stiffness: 400, damping: 25 }) });
+                        });
+                        btn.addEventListener('pointerleave', () => {
+                            Motion.animate(btn, { scale: 1 }, { easing: Motion.spring({ stiffness: 400, damping: 25 }) });
+                        });
+                        btn.addEventListener('pointerdown', () => {
+                            Motion.animate(btn, { scale: 0.96 }, { duration: 0.1 });
+                        });
+                        btn.addEventListener('pointerup', () => {
+                            Motion.animate(btn, { scale: 1.03 }, { easing: Motion.spring({ stiffness: 400, damping: 25 }) });
+                        });
+                    });
+                }
+            });
+
+            return {
+                isDark,
+                toggleTheme,
+                menuOpen,
+                toggleMenu,
+                navigateTo,
+                scrollToTop,
+                navLinks,
+                activeCategory,
+                categories,
+                services,
+                filteredProjects,
+                setFilter,
+                copied,
+                copyEmail,
+                portfolioSection,
+                bentoGallery,
+                progressBar,
+                whatsappDockBtn
+            };
+        }
+    }).mount('#app');
+</script>
+</body>
+</html>
